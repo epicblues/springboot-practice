@@ -17,6 +17,7 @@ public class MainRepository implements IRepository {
     Config config;
 
     public void createConnection() {
+        System.out.println(this.config.getCustomClass());
         try {
             conn = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/remember_me?user=%s&password=%s", config.getDbUser(), config.getDbPassword()));
             ResultSet result = conn.createStatement().executeQuery("SELECT * FROM user");

@@ -1,5 +1,8 @@
 package com.example.demo.config;
 
+import com.example.demo.annotation.CustomClass;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +16,16 @@ import java.util.StringTokenizer;
 public class Config {
     private final Map<String, String> configFile;
 
+    @Autowired()
+    @Qualifier("ccc")
+    private CustomClass customClasssdv;
+
+
+
+
+
     public Config() throws IOException {
+
         this.configFile = new HashMap<>();
         BufferedReader br = new BufferedReader(new FileReader(new ClassPathResource("./secret.properties").getFile())
 
@@ -42,5 +54,5 @@ public class Config {
         return configFile.get("password");
     }
 
-
+    public String getCustomClass() {return this.customClasssdv.myData;}
 }
