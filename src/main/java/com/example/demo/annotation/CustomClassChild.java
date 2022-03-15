@@ -1,18 +1,16 @@
 package com.example.demo.annotation;
 
 
-import org.springframework.beans.factory.annotation.Qualifier;
-
 @MyAnnotation("ccc")
-public class CustomClassChild extends CustomClass{
+public class CustomClassChild extends CustomClass {
 
-    public CustomClassChild() {
+  public CustomClassChild() {
 
-        this.myData="children";
-    }
+    this.myData = "children";
+  }
 
-    public String getMyData() {
-        this.myData = "children";
-        return myData;
-    }
+  public String getMyData() {
+    this.myData = "children";
+    return myData;
+  }
 }
