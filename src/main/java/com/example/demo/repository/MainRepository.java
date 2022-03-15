@@ -4,8 +4,8 @@ import com.example.demo.config.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 
 @Repository("mysql")
@@ -16,10 +16,15 @@ public class MainRepository implements IRepository {
     @Autowired()
     Config config;
 
+    @Autowired()
+    DataSource rdbDataSource;
+
     public void createConnection() {
         System.out.println(this.config.getCustomClass());
         try {
-            conn = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/remember_me?user=%s&password=%s", config.getDbUser(), config.getDbPassword()));
+
+            conn = rdbDataSource.getConnection();
+
             ResultSet result = conn.createStatement().executeQuery("SELECT * FROM user");
             while (result.next()) {
                 System.out.println(result.getString(2));

@@ -17,8 +17,7 @@ public class Config {
     private final Map<String, String> configFile;
 
     @Autowired()
-    @Qualifier("ccc")
-    private CustomClass customClasssdv;
+    private CustomClass ccc;
 
 
 
@@ -54,5 +53,5 @@ public class Config {
         return configFile.get("password");
     }
 
-    public String getCustomClass() {return this.customClasssdv.myData;}
+    public String getCustomClass() {return this.ccc.myData;}
 }
